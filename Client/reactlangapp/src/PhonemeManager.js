@@ -2,7 +2,6 @@ import React, {useState, useEffect} from 'react';
 import Phoneme from './Phoneme';
 import "./App.scss";
 import Axios from 'axios';
-import axios from 'axios';
 
 function PhonemeManager() { //default phonemes for development
     const initialData = [
@@ -49,7 +48,7 @@ function PhonemeManager() { //default phonemes for development
         return new Promise(
           resolve => setTimeout(resolve, ms)
         );
-      }
+    }
 
     const deletePhoneme = (phonemeToDelete) => {
         new Promise((resolve, reject) => {
@@ -442,23 +441,8 @@ function PhonemeManager() { //default phonemes for development
     ////////////////////////////////////////////////////////////////////////
 
     useEffect(() => {
-        console.log("On mount get")
-        //Axios.get("http://localhost:3001/api/get").then((response) => {
-        //    setPhonemes(response.data);
-        //})
         getPhonemes();
     }, []);
-
-    /*useEffect(() => {
-        console.log("get after something changed")
-        async function fetchData() {
-            const request = await axios.get("http://localhost:3001/api/get");
-                setPhonemes(request.data);
-                console.log(request.data);
-            return request;
-        }
-        fetchData();
-    }, [somethingChanged]);*/
 
     useEffect(() => {//update consonant table headers when phonemes change
         const poaHeader = getConsonantHeadersPOA;
@@ -473,13 +457,6 @@ function PhonemeManager() { //default phonemes for development
         const heightHeader = getConsonantHeadersHeight;
         setHeadersHeight(heightHeader);
     }, [phonemes]);
-
-    //useEffect(() => {
-    //    console.log("On mount get")
-    //    Axios.get("http://localhost:3001/api/get").then((response) => {
-    //        setPhonemes(response.data);
-    //    })
-    //}, []);
 
     return (
         <div class="flexbox-container"> {/* The form to add consonants */}
